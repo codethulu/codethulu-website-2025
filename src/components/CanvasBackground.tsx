@@ -120,7 +120,34 @@ const CanvasBackground: React.FC<CanvasBackgroundProps> = ({
             return (r + g + b) / 3 / 255;
         };
 
-        const prepareTransition = (fromImg: string, toImg: string) => {
+        const applyWaveEffects = (timestamp: number) => {
+            const { dots } = matrixRef.current;
+            wavesRef.current = wavesRef.current.filter(wave => {
+                const elapsed = timestamp - wave.startTime;
+                wave.radius = elapsed * wave.speed;
+                return wave.radius < wave.maxRadius;
+            });
+
+            dots.forEach(dot => {
+                dot.waveOffset = 0;
+                wavesRef.current.forEach(wave => {
+                    const dx = dot.x - wave.x;
+                    const dy = dot.y - wave.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const pulseWidth = 50;
+                    const pulsePosition = (wave.radius - distance) / pulseWidth;
+                    const waveEffect = Math.max(0, Math.exp(-pulsePosition * pulsePosition) * 3);
+                    dot.waveOffset += waveEffect;
+                });
+                const baseSize = transitionRef.current.active
+                    ? (0.5 + dot.previousBrightness * 4.0) // Use previous during transition
+                    : (0.5 + dot.currentBrightness * 4.0);
+                dot.targetSize = Math.max(0.5, baseSize + dot.waveOffset);
+                dot.size = dot.targetSize; // Immediate sync
+            });
+        };
+
+        const prepareTransition = (fromImg: string, toImg: string, timestamp: number) => {
             const { dots } = matrixRef.current;
 
             const fromImgData = processImageData(fromImg);
@@ -131,11 +158,9 @@ const CanvasBackground: React.FC<CanvasBackgroundProps> = ({
             dots.forEach(dot => {
                 dot.previousBrightness = getBrightnessAt(fromImgData, dot.x, dot.y);
                 dot.currentBrightness = getBrightnessAt(toImgData, dot.x, dot.y);
-                dot.targetSize = 0.5 + (dot.previousBrightness * 4.0);
-                dot.size = dot.targetSize;
-                dot.waveOffset = 0;
             });
 
+            applyWaveEffects(timestamp); // Apply waves immediately
             return true;
         };
 
@@ -143,7 +168,7 @@ const CanvasBackground: React.FC<CanvasBackgroundProps> = ({
             const { dots } = matrixRef.current;
             const { direction } = transitionRef.current;
 
-            // Update waves
+            // Update waves and apply effects
             wavesRef.current = wavesRef.current.filter(wave => {
                 const elapsed = timestamp - wave.startTime;
                 wave.radius = elapsed * wave.speed;
@@ -166,19 +191,16 @@ const CanvasBackground: React.FC<CanvasBackgroundProps> = ({
                     dotProgress = easeInOut(dotWavePosition);
                 }
 
-                let baseSize = previousSize * (1 - dotProgress) + targetSize * dotProgress;
+                const baseSize = previousSize * (1 - dotProgress) + targetSize * dotProgress;
                 dot.waveOffset = 0;
 
-                // Calculate single pulse wave effects
                 wavesRef.current.forEach(wave => {
                     const dx = dot.x - wave.x;
                     const dy = dot.y - wave.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    const pulseWidth = 50; // Width of the pulse in pixels
+                    const pulseWidth = 50;
                     const pulsePosition = (wave.radius - distance) / pulseWidth;
-
-                    // Gaussian-like pulse: single peak that fades out
-                    const waveEffect = Math.max(0, Math.exp(-pulsePosition * pulsePosition) * 3); // Amplitude of 3
+                    const waveEffect = Math.max(0, Math.exp(-pulsePosition * pulsePosition) * 3);
                     dot.waveOffset += waveEffect;
                 });
 
@@ -213,13 +235,13 @@ const CanvasBackground: React.FC<CanvasBackgroundProps> = ({
                 startTime: performance.now(),
                 radius: 0,
                 maxRadius: Math.max(canvas.width, canvas.height),
-                speed: 0.1 // Pixels per millisecond
+                speed: 0.1
             });
         };
 
         const renderFrame = (timestamp: number) => {
             if (!lastImageRef.current && previousImage && !transitionRef.current.active) {
-                const prepared = prepareTransition(previousImage, previousImage);
+                const prepared = prepareTransition(previousImage, previousImage, timestamp);
                 if (prepared) renderDots();
             }
 
@@ -234,16 +256,18 @@ const CanvasBackground: React.FC<CanvasBackgroundProps> = ({
                     prepared: false
                 };
 
-                const prepared = prepareTransition(fromImage, currentImage);
+                const prepared = prepareTransition(fromImage, currentImage, timestamp);
                 transitionRef.current.prepared = prepared;
-                if (prepared) lastImageRef.current = currentImage;
+                if (prepared) {
+                    lastImageRef.current = currentImage;
+                    renderDots(); // Render immediately after preparation
+                }
             }
 
             const { active, startTime, prepared } = transitionRef.current;
             if (active && prepared) {
                 const progress = Math.min(1, (timestamp - startTime) / transitionDuration);
                 updateDotTargets(progress, timestamp);
-
                 if (progress >= 1) transitionRef.current.active = false;
             } else {
                 updateDotTargets(1, timestamp);
@@ -281,6 +305,7 @@ const CanvasBackground: React.FC<CanvasBackgroundProps> = ({
         const handleResize = () => {
             imageDataCacheRef.current = {};
             setupCanvas();
+            applyWaveEffects(performance.now());
         };
 
         window.addEventListener('resize', handleResize);
