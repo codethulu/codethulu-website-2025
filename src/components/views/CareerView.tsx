@@ -145,7 +145,7 @@ const CareerView: React.FC<CareerViewProps> = ({ onNavigate }) => {
                                             style={{
                                                 backgroundColor: 'white',
                                                 zIndex: activeIndex === index ? 30 : 20,
-                                                boxShadow: "0 8px 32px rgba(0,0,0,0.4)"
+                                                boxShadow: activeIndex === index ? "0 8px 32px rgba(0,0,0,0.4)" : "0 0 0 rgba(0,0,0,0)",
                                             }}
                                             transition={{
                                                 type: "spring",
