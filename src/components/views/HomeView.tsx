@@ -62,7 +62,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                     className="mb-6 text-justify"
                     style={{ width: `${titleWidth}px` }}
                 >
-                    <span className="text-white uppercase text-sm md:text-2xl">Welcome to my website. I am a Software Engineer with an enthusiasm for learning, and solving problems. I have previously worked for Canonical (creators of Ubuntu) and am currently helping to disrupt the sports tracking industry by covering dev-ops and software engineering problems at Bolt6. Please scroll to allow me to introduce you to my corner of the internet.</span>
+                    <span className="text-white uppercase text-sm md:text-2xl">Welcome to my website. I am a Software Engineer with an enthusiasm for learning and solving problems. I have previously worked for Canonical (creators of Ubuntu) and am currently helping to disrupt the sports tracking industry by covering dev-ops and software engineering problems at Bolt6. Please scroll to allow me to introduce you to my corner of the internet.</span>
                 </div>
 
                 <div

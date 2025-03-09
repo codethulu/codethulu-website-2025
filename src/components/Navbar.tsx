@@ -8,6 +8,7 @@ const Navbar = () => {
                 <div className="flex space-x-4">
                     <Link to="/" className="text-white font-bold transition-colors uppercase">Home</Link>
                     <Link to="/blog" className="text-white font-bold transition-colors uppercase">Blog</Link>
+                    <Link to="/projects" className="text-white font-bold transition-colors uppercase">Projects</Link>
                 </div>
             </div>
         </nav>
