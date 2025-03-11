@@ -132,10 +132,10 @@ const CareerView: React.FC<CareerViewProps> = ({ onNavigate }) => {
                                             className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer flex items-center justify-center"
                                             animate={{
                                                 width: activeIndex === index && showContent
-                                                    ? isSmallScreen ? `90vw` : `${EXPANDED_DOT_SIZE}px`
+                                                    ? `${EXPANDED_DOT_SIZE}px`
                                                     : `${DOT_SIZE}px`,
                                                 height: activeIndex === index && showContent
-                                                    ? isSmallScreen ? `400px` : `${EXPANDED_DOT_SIZE}px`
+                                                    ? `${EXPANDED_DOT_SIZE}px`
                                                     : `${DOT_SIZE}px`,
                                                 borderRadius: activeIndex === index && showContent
                                                     ? "0"
@@ -201,7 +201,7 @@ const CareerView: React.FC<CareerViewProps> = ({ onNavigate }) => {
                 </div>
             </div>
 
-            <div className="flex justify-center gap-8 mb-10 mt-16">
+            <div className="bg-black bg-opacity-70 rounded-full px-3 py-3 xl:mb-8 flex items-center justify-center space-x-4">
                 <motion.button
                     animate={{ opacity: activeIndex > 0 ? 1 : 0.3 }}
                     className="bg-white rounded-full p-3 text-black hover:bg-opacity-70 transition-all cursor-pointer"
@@ -212,6 +212,16 @@ const CareerView: React.FC<CareerViewProps> = ({ onNavigate }) => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                 </motion.button>
+
+                <div className="flex items-center justify-center gap-2">
+                    {careerList.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${activeIndex === index ? 'bg-white scale-120' : 'bg-gray-500 hover:bg-gray-400 scale-100'}`}
+                            onClick={() => navigateTo(index)}
+                        />
+                    ))}
+                </div>
 
                 <motion.button
                     animate={{ opacity: activeIndex < careerList.length - 1 ? 1 : 0.3 }}

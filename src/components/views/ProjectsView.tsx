@@ -1,18 +1,18 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@tanstack/react-router';
-import ProjectCard from '../ProjectCard'; // Assuming you have the ProjectCard component
-import projects from '../../data/projects'; // Assuming this is your projects data source
+import ProjectCard from '../ProjectCard';
+import projects from '../../data/projects';
 
 interface ProjectsViewProps {
     onNavigate: () => void;
+    reducedView?: boolean;  // Added new prop
 }
 
-const ProjectsView: React.FC<ProjectsViewProps> = ({ onNavigate }) => {
+const ProjectsView: React.FC<ProjectsViewProps> = ({ onNavigate, reducedView = true }) => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [scrollPosition, setScrollPosition] = useState(0);
 
-    // Filter projects with 'favourite' tag
     const favouriteProjects = projects.filter(project =>
         project.tags.some(tag => tag.toLowerCase() === 'favourites')
     );
@@ -35,11 +35,25 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({ onNavigate }) => {
         }
     };
 
-    // Check if scroll buttons should be visible
     const showLeftArrow = scrollPosition > 10;
     const showRightArrow = scrollContainerRef.current
         ? scrollPosition < scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth - 10
         : true;
+
+    const gradientVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { duration: 0.3, ease: 'easeInOut' }
+        }
+    };
+
+    const buttonVariants = {
+        hover: {
+            scale: 1.1,
+            transition: { duration: 0.2, ease: 'easeInOut' }
+        }
+    };
 
     return (
         <div className="flex flex-col items-center h-screen relative z-10 px-4 py-16 overflow-hidden">
@@ -56,14 +70,12 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({ onNavigate }) => {
                 >
                     <h3 className="text-2xl xl:text-3xl font-bold mb-2 xl:mb-4 uppercase font-druk">Professional Work</h3>
                     <div className="h-0.5 xl:h-1 bg-black bg-opacity-50 w-full my-2 xl:my-6"></div>
-
                     <p className="mb-4 text-xs xl:text-base text-justify uppercase leading-relaxed">
                         I am currently focused on developing on-premises infrastructure and internal software engineering projects in my professional role.
                         My work covers designing, developing and supporting our on-premises infrastructure, moving from an entirely cloud (AWS) platform. Alongside this, I am working
                         on internal software engineering projects (such as our web-based cluster management system for managing custers and robust deployment of our applications
                         through non-technical facing interfaces), our main C++ codebase and various other secret projects...
                     </p>
-
                     <p className="mb-4 text-xs xl:text-base text-justify uppercase leading-relaxed">
                         Due to the proprietary nature of these projects, details cannot be shared publicly. However, below you can explore some of my
                         personal projects:
@@ -75,15 +87,26 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({ onNavigate }) => {
 
                     <div className="relative">
                         {showLeftArrow && (
-                            <button
+                            <motion.div
+                                className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-black to-transparent pointer-events-auto z-20"
+                                variants={gradientVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="hidden"
+                            />
+                        )}
+                        {showLeftArrow && (
+                            <motion.button
                                 onClick={scrollLeft}
-                                className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 rounded-full p-2 shadow-lg text-black"
+                                className="absolute left-0 top-1/2 transform -translate-y-1/2 z-30 bg-white bg-opacity-80 rounded-full p-3 shadow-lg text-black cursor-pointer"
+                                variants={buttonVariants}
+                                whileHover="hover"
                                 aria-label="Scroll left"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <polyline points="15 18 9 12 15 6"></polyline>
                                 </svg>
-                            </button>
+                            </motion.button>
                         )}
 
                         <div
@@ -95,7 +118,7 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({ onNavigate }) => {
                             {favouriteProjects.length > 0 ? (
                                 favouriteProjects.map(project => (
                                     <div key={project.id} className="flex-none w-64 md:w-72 lg:w-80">
-                                        <ProjectCard project={project} />
+                                        <ProjectCard project={project} reducedView={reducedView} />
                                     </div>
                                 ))
                             ) : (
@@ -104,15 +127,26 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({ onNavigate }) => {
                         </div>
 
                         {showRightArrow && (
-                            <button
+                            <motion.div
+                                className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-black to-transparent pointer-events-auto z-20"
+                                variants={gradientVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="hidden"
+                            />
+                        )}
+                        {showRightArrow && (
+                            <motion.button
                                 onClick={scrollRight}
-                                className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 rounded-full p-2 shadow-lg text-black"
+                                className="absolute right-0 top-1/2 transform -translate-y-1/2 z-30 bg-white bg-opacity-80 rounded-full p-3 shadow-lg text-black cursor-pointer"
+                                variants={buttonVariants}
+                                whileHover="hover"
                                 aria-label="Scroll right"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <polyline points="9 18 15 12 9 6"></polyline>
                                 </svg>
-                            </button>
+                            </motion.button>
                         )}
                     </div>
                 </div>

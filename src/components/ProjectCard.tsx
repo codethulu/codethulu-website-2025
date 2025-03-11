@@ -9,7 +9,12 @@ interface Project {
     description: string;
 }
 
-const ProjectCard = ({ project }: { project: Project }) => {
+interface ProjectCardProps {
+    project: Project;
+    reducedView?: boolean;
+}
+
+const ProjectCard = ({ project, reducedView = false }: ProjectCardProps) => {
     return (
         <Link to={`/projects/${project.id}`} className="block">
             <div className="relative group aspect-square overflow-hidden">
@@ -41,17 +46,25 @@ const ProjectCard = ({ project }: { project: Project }) => {
             transition-opacity duration-300 ease-in-out">
                         <div className="p-10 text-left text-black">
                             <h2 className="text-xl font-druk uppercase">{project.name}</h2>
-                            <p className="text-md uppercase mb-4">
-                                {project.tags.map((tag) => (
-                                    <Tag key={tag} tag={tag} backgroundColor="black" />
-                                ))}
-                            </p>
-                            <div className="h-0.5 xl:h-1 bg-black bg-opacity-50 w-full mb-4"></div>
-                            <p className="text-md uppercase mt-2 mb-6">
-                                {project.description.length > 100
-                                    ? `${project.description.substring(0, 97)}...`
-                                    : project.description}
-                            </p>
+
+                            {!reducedView && (
+                                <>
+                                    <p className="text-md uppercase mb-4">
+                                        {project.tags.map((tag) => (
+                                            <Tag key={tag} tag={tag} backgroundColor="black" />
+                                        ))}
+                                    </p>
+                                    <div className="h-0.5 xl:h-1 bg-black bg-opacity-50 w-full mb-4"></div>
+                                    <p className="text-md uppercase mt-2 mb-6">
+                                        {project.description.length > 100
+                                            ? `${project.description.substring(0, 97)}...`
+                                            : project.description}
+                                    </p>
+                                </>
+                            )}
+                            {reducedView && (
+                                <div className="h-0.5 xl:h-1 bg-black bg-opacity-50 w-full mb-8 mt-6"></div>
+                            )}
                             <Link
                                 to={`/projects/${project.id}`}
                                 className="bg-black bg-opacity-10 hover:bg-opacity-20 text-white uppercase font-bold py-3 px-4 transition-all cursor-pointer"
