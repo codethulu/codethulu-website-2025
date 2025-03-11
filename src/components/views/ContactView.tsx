@@ -18,7 +18,6 @@ const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                 </svg>
             ),
             link: 'https://github.com/codethulu',
-            color: '#333333'
         },
         {
             id: 'bluesky',
@@ -29,7 +28,6 @@ const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                 </svg>
             ),
             link: 'https://bsky.app/profile/codethulu.dev',
-            color: '#0085FF'
         },
         {
             id: 'x',
@@ -40,7 +38,6 @@ const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                 </svg>
             ),
             link: 'https://twitter.com/Codethulu_',
-            color: '#000000'
         },
         {
             id: 'email',
@@ -51,7 +48,6 @@ const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                 </svg>
             ),
             link: 'mailto:brendan@codethulu.dev',
-            color: '#D44638'
         },
         {
             id: 'linkedin',
@@ -62,18 +58,15 @@ const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                 </svg>
             ),
             link: 'https://www.linkedin.com/in/brendanbelldev/',
-            color: '#0077B5'
         }
     ];
 
     return (
         <div className="flex flex-col items-center justify-center h-screen relative z-10 px-4 overflow-hidden">
-            {/* Heading */}
             <div className="mb-12 mt-16">
                 <h2 className="text-5xl md:text-7xl font-bold font-druk">CONTACT</h2>
             </div>
 
-            {/* Contact buttons grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-3xl w-full px-4">
                 {contactButtons.map((button) => (
                     <motion.a
@@ -81,8 +74,7 @@ const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                         href={button.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative overflow-hidden text-white"
-                        style={{ backgroundColor: button.color }}
+                        className="relative overflow-hidden bg-white text-black"
                         whileHover={{
                             scale: 1.05,
                             transition: { duration: 0.5 }
@@ -90,16 +82,15 @@ const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                         onHoverStart={() => setHoveredButton(button.id)}
                         onHoverEnd={() => setHoveredButton(null)}
                     >
-                        {/* button content */}
                         <div className="p-4 xl:p-8 flex items-center justify-between relative z-10">
                             <div className="flex flex-col">
                                 <span className="text-lg xl:text-2xl font-bold uppercase font-druk">{button.label}</span>
                                 <motion.div
-                                    className="h-1 bg-white mt-2 w-full"
+                                    className="h-1 bg-black mt-2 w-full"
                                 />
                             </div>
 
-                            <div className="text-white">
+                            <div className="text-black">
                                 {button.icon}
                             </div>
                         </div>
@@ -107,7 +98,6 @@ const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                 ))}
             </div>
 
-            {/* footer */}
             <div className="absolute bottom-0 w-full flex flex-col items-center pb-8">
                 <div className="h-1 bg-white bg-opacity-10 w-[90%] mb-6"></div>
                 <p className="text-white text-opacity-70 font-bold text-sm uppercase">

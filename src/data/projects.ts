@@ -84,16 +84,16 @@ const projects = [
     },
     {
         id: "waffles",
-        name: "WAFFLES: A data structure project",
+        name: "WAFFLES: An exploration into runtime and data structures",
         year: "2021",
-        description: "A project that emphasised the application of data structure and algorithms content I had learnt at University. The backend for a restaurant review website I wrote utilised AVL trees, binary searches and hashmaps to efficiently store and locate data for the system.",
+        description: "A project that emphasised the application of data structure and algorithms content I had learnt at University. The backend for a restaurant review website utilised AVL trees implemented from scratch, binary searches and hashmaps to efficiently store and locate data for the system.",
         tags: ["java"],
         image: "waffles",
 
     },
     {
         id: "old-website",
-        name: "Personal Website 1.0",
+        name: "Personal Website 2021",
         year: "2021",
         description: "The first iteration of my personal website. I wrote this first iteraton in plain html, css and javascript.",
         tags: ["html", "css", "javascript", "web-dev"],
@@ -147,7 +147,7 @@ const projects = [
     },
     {
         id: "cs255",
-        name: "Show Must Go On",
+        name: "Simulated Annealing implementation to solve constraints satisfaction problem",
         year: "2022",
         description: "Using artificial intelligence concepts and techniques, such as backtracking and simulated annealing, I created the methods required to create valid timetables satisfying constraints that would allow for valid matching of comedians to demographics that they would appeal to.",
         tags: ["python", "ai"],
@@ -165,7 +165,7 @@ const projects = [
     },
     {
         id: "website2",
-        name: "Personal Website 2.0",
+        name: "Personal Website 2022",
         year: "2022",
         description: "The second iteration of my personal website. This was my first project written using react and typescript, and although there are similarities between it and the website you are currently visiting, I have since improved my React skills substantially.",
         tags: ["typescript", "react", "web-dev"],
@@ -183,7 +183,7 @@ const projects = [
     },
     {
         id: "cs262",
-        name: "Tautology Checker",
+        name: "Tautology Checker in Prolog",
         year: "2022",
         description: "I wrote a program to check whether logical statements are tautologies or not, using prolog. The program works by apply resolution rules and backtracking ",
         tags: ["prolog"],
@@ -212,7 +212,7 @@ const projects = [
         id: "bitventory",
         name: "bitventory",
         year: "2022",
-        description: "A simple, flexible inventory engine designed to be used in a pygame project. The system was built to be adaptable and easy to use, and has features such as item sorting and multiple inventory window support.",
+        description: "A simple, flexible inventory library designed to be used in a pygame project. The system was built to be adaptable and easy to use, and has features such as item sorting and multiple inventory window support.",
         tags: ["python", "games"],
         image: "bitventory",
 
@@ -235,7 +235,7 @@ const projects = [
     },
     {
         id: "website2023",
-        name: "Personal Website 3.0",
+        name: "Personal Website 2023",
         year: "2023",
         description: "The third iteration of my personal website. By this point I have become very proficient in react and typescript, and have used my skills to create a website that is both aesthetically pleasing and functional. This website uses react hooks for dynamic content, and is fully responsive.",
         tags: ["typescript", "react", "web-dev", "css", "html"],
@@ -243,12 +243,12 @@ const projects = [
 
     },
     {
-        id: "cs324",
+        id: "omega-day",
         name: "OMEGA DAY",
         year: "2023",
         description: "A First Person Shooter game written using three js. The game consists of a gravity and collision system written from scratch, and artificial intelligence for enemies. Each enemy takes in multiple input nodes and calculates correct behaviour using a simple neural network.",
         tags: ["javascript", "opengl", "games", "ai"],
-        image: "cs324",
+        image: "omega-day",
     },
     {
         id: "synthetica",
@@ -268,7 +268,7 @@ const projects = [
     },
     {
         id: "nn-2",
-        name: "Character Recognition with Neural Networks",
+        name: "Character Recognition with Neural Networks from scratch.",
         year: "2023",
         description: "I implemented a fully convolutional neural network to recognise characters and digits with added noise. The program takes a string of characters and adds noise to the image. The neural network then attempts to recognise the characters and outputs the result. The design choices I implemented result in a highly accurate neural network that can recognise characters with a high degree of accuracy.",
         tags: ["python", "ai", "neural networks"],
@@ -276,11 +276,27 @@ const projects = [
     },
     {
         id: "tanagram",
-        name: "Final Year Project",
+        name: "Tanagram - A Functional Game Engine in Rust",
         year: "2023",
         description: "This project resulted in an efficient, extensible, and modular game engine for rendering large-scale environments. The use of an entity component system design pattern, functional programming, and data-oriented design was used to showcase a novel and optimized approach to game engine development. By remaining completely memory-robust by utilising Rust and the immutability it offers, the engine provides a safe and efficient environment for game development.",
         tags: ["favourites", "rust", "games", "opengl"],
         image: "tanagram",
+    },
+    {
+        id: "website2024",
+        name: "Personal Website 2024",
+        year: "2024",
+        description: "My personal website, version 2024. This website was built using react and typescript, and demonstrated more of my design abilities and creativity than previous iterations, enabled by my increased proficiency in web development. I was quite proud of this design, which used a single page layout that guided the user through my page with animations and carefully designed interactions. Much of the design of my 2025 website was inspired by ideas explored in this iteration.",
+        tags: ["typescript", "react", "web-dev", "css", "html"],
+        image: "website2024",
+    },
+    {
+        id: "hello-devops",
+        name: "Hello DevOps",
+        year: "2025",
+        description: "A web application that provides a standardised, easy-to-use interface for raising tickets, managing projects, as well as requesting formation of new onprem clusters from a pool of available nodes. This application was designed to be highly fast and responsive, and displayed a huge step up in quality from previous full stack projects. It is highly performant and modular with intelligent project architecture and extensible API, but also a carefully designed user interface.",
+        tags: ["typescript", "react", "web-dev", "css", "html", "python", "fastapi"],
+        image: "hello-devops",
     },
 ];
 

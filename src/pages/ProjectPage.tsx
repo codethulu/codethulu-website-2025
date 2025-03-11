@@ -1,15 +1,13 @@
 import Navbar from "../components/Navbar";
-import { getRouteApi, useNavigate, useParams } from "@tanstack/react-router";
+import { getRouteApi, Link, useNavigate, useParams } from "@tanstack/react-router";
 import projects from '../data/projects';
 import { useEffect, useState } from "react";
 import CanvasBackground from "../components/CanvasBackground";
-
+import Tag from "../components/Tag";
 
 const routeApi = getRouteApi('/projects/$projectId')
 
-
 const ProjectPage = () => {
-
     const [isInitialLoadComplete, setIsInitialLoadComplete] = useState(false);
     const [transitionDirection, setTransitionDirection] = useState(1);
     const [preloadedImages, setPreloadedImages] = useState<{ [key: string]: HTMLImageElement }>({});
@@ -27,7 +25,7 @@ const ProjectPage = () => {
     }
 
     const backgroundImages = [
-        "src/assets/dots.jpg",
+        "../src/assets/projects/" + project.image + ".jpg",
     ];
 
     useEffect(() => {
@@ -45,7 +43,7 @@ const ProjectPage = () => {
                     };
                     img.onerror = () => {
                         console.error(`Failed to load: ${src}`);
-                        resolve(); // Continue even if an image fails
+                        resolve();
                     };
                     img.src = src;
                 });
@@ -62,26 +60,46 @@ const ProjectPage = () => {
     return (
         <>
             <Navbar />
-            {/* {isInitialLoadComplete && (
+            {isInitialLoadComplete && (
                 <CanvasBackground
                     currentImage={backgroundImages[0]}
                     previousImage={backgroundImages[0]}
                     preloadedImages={preloadedImages}
                     transitionDirection={transitionDirection}
                 />
-            )} */}
-            <div className="pt-20 px-4 min-h-screen">
-                <h1 className="text-4xl font-bold mb-6">Projects</h1>
-                <p>Project ID: {projectId}</p>
-                <p className="mb-6">Welcome to my blog! This page is under construction.</p>
-
-                <h1>{project.name}</h1>
-                <p><strong>Year:</strong> {project.year}</p>
-                <p>{project.description}</p>
-                <div>
-                    <strong>Tags:</strong> {project.tags.join(", ")}
+            )}
+            <div className="relative z-10 min-h-screen px-4 py-16">
+                <div className="mt-4 mx-8">
+                    <div className="mb-8 -ml-8">
+                        <Link
+                            to="/projects"
+                            className="bg-white bg-opacity-10 hover:bg-opacity-20 text-black uppercase font-bold py-3 px-4 transition-all cursor-pointer inline-block"
+                        >
+                            Back to Projects
+                        </Link>
+                        <h1 className="text-4xl md:text-6xl font-bold font-druk uppercase mt-6 text-left">
+                            {project.name}
+                        </h1>
+                        <div className="mt-4 text-left">
+                            {project.tags.map((tag) => (
+                                <Tag key={tag} tag={tag} backgroundColor="white" />
+                            ))}
+                        </div>
+                    </div>
                 </div>
-                <img src={`/images/${project.image}.jpg`} alt={project.name} />
+                <div className="max-w-7xl mx-auto mt-4">
+                    {/* Centered Content */}
+                    <div className="flex flex-col items-center">
+                        <img
+                            src={`../src/assets/projects/${project.image}.jpg`}
+                            alt={project.name}
+                            className="w-full max-w-md aspect-square object-cover mb-8"
+                        />
+                        <div className="bg-white bg-opacity-90 p-16 max-w-3xl w-full uppercase">
+                            <p className="text-gray-800 text-lg">{project.description}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );
