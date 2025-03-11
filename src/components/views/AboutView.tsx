@@ -47,7 +47,7 @@ const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
                                 style={{ backgroundImage: "url('/src/assets/profile.jpg')", boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}></div>
                         </div>
                         <h3 className="text-2xl xl:text-3xl font-bold mb-4 uppercase font-druk">Brendan Bell</h3>
-                        <div className="h-1 bg-black bg-opacity-50 w-full my-2 xl:my-6"></div>
+                        <div className="h-0.5 xl:h-1 bg-black bg-opacity-50 w-full my-2 xl:my-6"></div>
 
 
                         <p className="mb-4 text-xs xl:text-base text-justify uppercase leading-relaxed">
@@ -62,10 +62,10 @@ const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
                             Even outside of programming, I like to create things; painting, graphic design and drawing is something I have fun doing. I also enjoy reading, bouldering (at an amateur level), collecting records and listening to music, as well as spending time with my friends and family.
                         </p>
 
-                        <div className="h-1 bg-black bg-opacity-50 w-full my-2 xl:my-6"></div>
+                        <div className="h-0.5 xl:h-1 bg-black bg-opacity-50 w-full my-2 xl:my-6"></div>
 
                         <p className="text-xs xl:text-sm uppercase">
-                            Software Engineer • Web Developer • Designer
+                            Software Engineer • DevOps/Platform Engineer • Web Developer • Designer
                         </p>
                     </motion.div>
                 </div>

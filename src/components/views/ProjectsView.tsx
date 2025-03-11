@@ -54,12 +54,12 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({ onNavigate }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h3 className="text-2xl xl:text-3xl font-bold mb-4 uppercase font-druk">Professional Work</h3>
-                    <div className="h-1 bg-black bg-opacity-50 w-full my-2 xl:my-6"></div>
+                    <h3 className="text-2xl xl:text-3xl font-bold mb-2 xl:mb-4 uppercase font-druk">Professional Work</h3>
+                    <div className="h-0.5 xl:h-1 bg-black bg-opacity-50 w-full my-2 xl:my-6"></div>
 
                     <p className="mb-4 text-xs xl:text-base text-justify uppercase leading-relaxed">
                         I am currently focused on developing on-premises infrastructure and internal software engineering projects in my professional role.
-                        My work covers designing, developing and supporting the transition from cloud to on-premises infrastructure. Alongside this, I am working
+                        My work covers designing, developing and supporting our on-premises infrastructure, moving from an entirely cloud (AWS) platform. Alongside this, I am working
                         on internal software engineering projects (such as our web-based cluster management system for managing custers and robust deployment of our applications
                         through non-technical facing interfaces), our main C++ codebase and various other secret projects...
                     </p>
