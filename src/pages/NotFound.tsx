@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import CanvasBackground from "../components/CanvasBackground";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
     const [isInitialLoadComplete, setIsInitialLoadComplete] = useState(false);
-    const [transitionDirection, setTransitionDirection] = useState(1);
+    const [transitionDirection] = useState(1);
     const [preloadedImages, setPreloadedImages] = useState<{ [key: string]: HTMLImageElement }>({});
 
 

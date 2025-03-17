@@ -6,7 +6,7 @@ interface CareerViewProps {
     onNavigate: () => void;
 }
 
-const CareerView: React.FC<CareerViewProps> = ({ onNavigate }) => {
+const CareerView: React.FC<CareerViewProps> = ({ }) => {
     const [activeIndex, setActiveIndex] = useState(careerList.length - 1);
     const [animating, setAnimating] = useState(false);
     const [showContent, setShowContent] = useState(true);

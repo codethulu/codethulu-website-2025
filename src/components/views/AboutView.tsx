@@ -4,7 +4,7 @@ interface AboutViewProps {
     onNavigate: () => void;
 }
 
-const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
+const AboutView: React.FC<AboutViewProps> = ({ }) => {
     return (
         <div className="flex flex-col items-center h-screen relative z-10 px-4 py-16 overflow-hidden">
             <div className="mb-12 mt-10">

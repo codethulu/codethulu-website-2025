@@ -1,15 +1,14 @@
 import Navbar from "../components/Navbar";
-import { getRouteApi, Link, useNavigate, useParams } from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import projects from '../data/projects';
 import { useEffect, useState } from "react";
 import CanvasBackground from "../components/CanvasBackground";
 import Tag from "../components/Tag";
 
-const routeApi = getRouteApi('/projects/$projectId')
-
 const ProjectPage = () => {
     const [isInitialLoadComplete, setIsInitialLoadComplete] = useState(false);
-    const [transitionDirection, setTransitionDirection] = useState(1);
+    const [transitionDirection] = useState(1);
+
     const [preloadedImages, setPreloadedImages] = useState<{ [key: string]: HTMLImageElement }>({});
 
     const navigate = useNavigate();

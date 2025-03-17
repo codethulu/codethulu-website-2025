@@ -5,8 +5,8 @@ interface ContactViewProps {
     onNavigate: () => void;
 }
 
-const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
-    const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+const ContactView: React.FC<ContactViewProps> = ({ }) => {
+    const setHoveredButton = useState<string | null>(null)[1];
 
     const contactButtons = [
         {
