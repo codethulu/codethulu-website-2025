@@ -31,11 +31,11 @@ const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
                         <div className="h-0.5 xl:h-1 bg-black bg-opacity-50 w-full my-2 xl:my-6"></div>
 
                         <p className="mb-4 text-xs xl:text-base text-justify uppercase leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.
+                            Hello, my name is Brendan. I love solving problems, particularly those that involve computers.
                         </p>
 
                         <p className="mb-4 text-xs xl:text-base text-justify uppercase leading-relaxed">
-                            Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+                            I like creating algorithms, building great software, designing interfaces, and working with others to build awesome things. I am drawn to solving complex problems, and I try to develop the range of my abilities by pushing myself to work on diverse projects. Currently, my focus is on developing on-premises infrastructure and internal software engineering projects (full stack web development and C++/Pyhton over our tech stack) in my professional role. Outside of work, I like to work on game development, typically engine design. It is my favourite way outside of work to invent technical solutions to interesting problems, and express my creativity.
                         </p>
 
                         <p className="mb-4 text-xs xl:text-base text-justify uppercase leading-relaxed">
