@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "DrukWideMedium";
-    src: url("/src/assets/DrukWide-Medium.otf");
+    src: url("/public/assets/DrukWide-Medium.otf");
     font-weight: 500;
     font-style: normal;
 }

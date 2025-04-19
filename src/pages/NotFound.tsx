@@ -10,7 +10,7 @@ const NotFound = () => {
 
 
     const backgroundImages = [
-        "src/assets/404.jpg",
+        "/assets/404.jpg",
     ];
 
     useEffect(() => {

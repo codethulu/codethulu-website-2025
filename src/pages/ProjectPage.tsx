@@ -24,7 +24,7 @@ const ProjectPage = () => {
     }
 
     const backgroundImages = [
-        "../src/assets/projects/" + project.image + ".jpg",
+        "/assets/projects/" + project.image + ".jpg",
     ];
 
     useEffect(() => {
@@ -90,7 +90,7 @@ const ProjectPage = () => {
                     {/* Centered Content */}
                     <div className="flex flex-col items-center">
                         <img
-                            src={`../src/assets/projects/${project.image}.jpg`}
+                            src={`/assets/projects/${project.image}.jpg`}
                             alt={project.name}
                             className="w-full max-w-md aspect-square object-cover mb-8"
                         />

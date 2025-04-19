@@ -17,7 +17,7 @@ const AboutView: React.FC<AboutViewProps> = ({ }) => {
                         className="hidden md:block w-full md:w-1/3 aspect-square transition-all transform hover:scale-105 filter grayscale hover:filter-none duration-500"
                     >
                         <div className="w-full h-full bg-cover bg-center"
-                            style={{ backgroundImage: "url('/src/assets/profile.jpg')", boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}></div>
+                            style={{ backgroundImage: "url('/assets/profile.jpg')", boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}></div>
                     </div>
 
                     <div
@@ -25,7 +25,7 @@ const AboutView: React.FC<AboutViewProps> = ({ }) => {
                     >
                         <div className="md:hidden w-30 aspect-square mb-6">
                             <div className="w-30 h-30 bg-cover bg-center"
-                                style={{ backgroundImage: "url('/src/assets/profile.jpg')", boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}></div>
+                                style={{ backgroundImage: "url('/assets/profile.jpg')", boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}></div>
                         </div>
                         <h3 className="text-2xl xl:text-3xl font-bold mb-4 uppercase font-druk">Brendan Bell</h3>
                         <div className="h-0.5 xl:h-1 bg-black bg-opacity-50 w-full my-2 xl:my-6"></div>

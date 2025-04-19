@@ -6,7 +6,7 @@ import projects from '../../data/projects';
 
 interface ProjectsViewProps {
     onNavigate: () => void;
-    reducedView?: boolean;  // Added new prop
+    reducedView?: boolean;
 }
 
 const ProjectsView: React.FC<ProjectsViewProps> = ({ onNavigate, reducedView = true }) => {

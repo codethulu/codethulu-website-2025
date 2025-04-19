@@ -19,8 +19,8 @@ const ProjectCard = ({ project, reducedView = false }: ProjectCardProps) => {
         <Link to={`/projects/${project.id}`} className="block">
             <div className="relative group aspect-square overflow-hidden">
                 <img
-                    src={`/src/assets/projects/${project.image}.jpg`}
-                    onError={(e) => { e.currentTarget.src = '/src/assets/projects/default.jpg'; }}
+                    src={`/assets/projects/${project.image}.jpg`}
+                    onError={(e) => { e.currentTarget.src = '/assets/projects/default.jpg'; }}
                     alt={project.name}
                     className="w-full h-full object-cover"
                 />

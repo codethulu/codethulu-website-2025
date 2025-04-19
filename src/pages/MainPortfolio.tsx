@@ -25,11 +25,11 @@ const MainPortfolio = () => {
     const viewNames = ['Home', 'About', 'Career', 'Projects', 'Contact'];
 
     const backgroundImages = [
-        "src/assets/waves.jpg",
-        "src/assets/intertwine.jpg",
-        "src/assets/dots.jpg",
-        "src/assets/triangles.jpg",
-        "src/assets/wish.jpg"
+        "/assets/waves.jpg",
+        "/assets/intertwine.jpg",
+        "/assets/dots.jpg",
+        "/assets/triangles.jpg",
+        "/assets/wish.jpg"
     ];
 
     // Preload all images
