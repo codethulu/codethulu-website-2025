@@ -35,7 +35,7 @@ const AboutView: React.FC<AboutViewProps> = ({ }) => {
                         </p>
 
                         <p className="mb-4 text-xs xl:text-base text-justify uppercase leading-relaxed">
-                            I like creating algorithms, building great software, designing interfaces, and working with others to build awesome things. I am drawn to solving complex problems, and I try to develop the range of my abilities by pushing myself to work on diverse projects. Currently, my focus is on developing on-premises infrastructure and internal software engineering projects (full stack web development and C++/Pyhton over our tech stack) in my professional role. Outside of work, I like to work on game development, typically engine design. It is my favourite way outside of work to invent technical solutions to interesting problems, and express my creativity.
+                            I like creating algorithms, building great software, designing interfaces, and working with others to build awesome things. I am drawn to solving complex problems, and I try to develop the range of my abilities by pushing myself to work on diverse projects. Currently, my focus is on developing on-premises infrastructure and internal software engineering projects (full stack web development and C++/Python over our tech stack) in my professional role. Outside of work, I like to work on game development, typically engine design. It is my favourite way outside of work to invent technical solutions to interesting problems, and express my creativity.
                         </p>
 
                         <p className="mb-4 text-xs xl:text-base text-justify uppercase leading-relaxed">
